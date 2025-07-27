@@ -1,37 +1,41 @@
-# Vehicle Service Request Automation Project
+# Vehicle Service Request Automation
 
-A comprehensive automation solution that demonstrates AI-powered vehicle service request form filling using Playwright, Gemini AI, and Express.js. This project showcases automated testing, AI data generation, and web automation capabilities for automotive service management.
+An AI-powered vehicle service request automation system that demonstrates modern web automation, AI integration, and API design using Playwright, Google Gemini AI, and Express.js.
 
-## Features
+## 🚀 Quick Start
 
-### 🤖 AI-Powered Data Generation
-- Uses Google's Gemini AI to generate realistic vehicle service requests
-- Configurable temperature and top-p parameters for data diversity
-- Automatic JSON parsing and validation
-- Support for partial data overrides via API
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### 🌐 Web Automation
-- Playwright-based browser automation
-- Handles complex form interactions including collapsible sections
-- Robust element selection and form filling
-- Cross-browser compatibility
+2. **Set up environment variables:**
+   ```bash
+   # Create .env file with your Gemini API key
+   GOOGLE_GENERATIVE_AI_API_KEY=your_api_key_here
+   ```
 
-### 📊 RESTful API
-- Express.js server with comprehensive endpoints
-- Zod-based validation with detailed error messages
-- Configurable response privacy (confidential mode)
-- Comprehensive date, VIN, and field validation
+3. **Start the application:**
+   ```bash
+   npm run dev
+   ```
 
-### ⏰ Scheduled Automation
-- GitHub Actions cron job for automated service request generation
-- Weekly execution schedule (configurable)
-- Automated logging and result tracking
-- Production-ready deployment setup
+4. **Access the application:**
+   - Web interface: http://localhost:3000
+   - API endpoint: http://localhost:3000/run
 
-## Project Structure
+## 🎯 Features
+
+- 🤖 **AI-Powered Data Generation**: Uses Google's Gemini AI for realistic vehicle service requests
+- 🌐 **Web Automation**: Playwright-based form filling with collapsible sections
+- 📊 **RESTful API**: Express.js server with comprehensive Zod validation
+- ⏰ **Scheduled Automation**: GitHub Actions for weekly service request generation
+- 🎨 **Modern UI/UX**: Responsive design with smooth single-section interactions
+
+## 📁 Project Structure
 
 ```
-├── public/                 # Static web assets
+├── public/                 # Frontend assets
 │   ├── index.html         # Vehicle service request form interface
 │   ├── styles.css         # Modern responsive styling
 │   └── script.js          # Form interaction logic
@@ -45,58 +49,28 @@ A comprehensive automation solution that demonstrates AI-powered vehicle service
 │       └── setup.ts      # AI model configuration
 ├── scripts/
 │   └── testRun.ts        # Manual test execution
-└── .github/
-    └── workflows/        # GitHub Actions automation
+├── .github/
+│   └── workflows/        # GitHub Actions automation
+├── README.md             # This file
+├── demo.md               # Demo guide and presentation tips
+└── package.json          # Node.js dependencies
 ```
 
-## Quick Start
+## 📚 Documentation
 
-### Prerequisites
-- Node.js 20+
-- Google Gemini API key
+- **[Demo Guide](demo.md)**: Presentation tips and demo scenarios
+- **[API Documentation](#api-usage)**: Complete API reference below
 
-### Installation
+## 🔧 Technology Stack
 
-1. Clone the repository
-```bash
-git clone <repository-url>
-cd medical-form-automation
-```
+- **Backend**: Node.js, Express.js, TypeScript
+- **AI**: Google Gemini AI, Vercel AI SDK
+- **Automation**: Playwright
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Validation**: Zod
+- **DevOps**: GitHub Actions
 
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Install Playwright browsers
-```bash
-npx playwright install
-```
-
-4. Create environment file
-```bash
-# Create .env file with your API key
-GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key
-HEADLESS=false  # Set to true for production
-```
-
-### Running the Application
-
-1. Start the development server
-```bash
-npm run dev
-```
-
-2. Access the vehicle service request form
-- Web interface: http://localhost:3000
-- API endpoint: http://localhost:3000/run
-
-3. Run a test execution
-```bash
-npm run testRun
-```
-
-## API Usage
+## 📡 API Usage
 
 ### POST /run
 Submit vehicle service request data for automated form filling.
@@ -135,67 +109,54 @@ Submit vehicle service request data for automated form filling.
 - VIN must be exactly 17 characters (if provided)
 - Comprehensive validation for all fields
 
-## Automation Features
+## 🤖 AI Integration
 
-### AI Data Generation
-- Generates unique vehicle service requests for each execution
-- Configurable data diversity through temperature and top-p parameters
-- Handles edge cases and validation errors gracefully
+The system uses Google's Gemini AI to generate realistic vehicle service requests:
 
-### Form Automation
-- Automatically expands collapsible sections as needed
-- Fills all form fields with generated data
-- Handles dropdown selections and text inputs
-- Submits form and validates completion
+```typescript
+// AI prompt engineering for vehicle service data
+function getAiPrompt(): string {
+  return `
+    You are a car service request generator.
+    Each time you respond, generate a *new, unique* service request with realistic vehicle and problem data.
+    Pick a random car make/model combination and realistic service issues.
+    Output only one JSON object (no markdown/fences), for the schema:
+    ${JSON.stringify(serviceRequestSchema.shape, null, 2)}
+    
+    Guidelines:
+    - Use realistic car makes/models (Toyota Camry, Honda Civic, Ford F-150, etc.)
+    - Generate realistic service problems (engine noise, brake issues, electrical problems, etc.)
+    - Use realistic mileage (10,000 to 200,000)
+    - Generate realistic customer names and contact information`
+}
+```
 
-### Scheduled Execution
-- GitHub Actions workflow runs weekly (Sundays at midnight UTC)
-- Automated logging to `serviceRequest.log`
-- Configurable execution limits for testing
-- Production-ready deployment configuration
+## 🔒 Validation Features
 
-## Technical Implementation
+- **Date Validation**: ISO format with leap year handling
+- **VIN Validation**: 17 characters, excludes I/O/Q
+- **Phone Validation**: Character restrictions and format checking
+- **Email Validation**: RFC-compliant email format
+- **Field Length Limits**: Reasonable limits for all text fields
+- **Enum Validation**: Predefined values for dropdowns
 
-### AI Integration
-- Uses Vercel AI SDK for Gemini integration
-- Configurable prompt engineering for data generation
-- Robust JSON parsing with error handling
-- Temperature and top-p tuning for data diversity
+## ⏰ Scheduled Automation
 
-### Browser Automation
-- Playwright for cross-browser compatibility
-- Robust element selection strategies
-- Error handling and retry mechanisms
-- Headless mode support for production
+The GitHub Actions workflow runs weekly (Sundays at midnight UTC) to:
+- Generate new service requests using AI
+- Automatically fill out the form
+- Log results to `serviceRequest.log`
+- Commit changes to the repository
 
-### API Design
-- RESTful endpoint design
-- Zod-based comprehensive input validation
-- Configurable response formats
-- Error handling with detailed validation messages
+## 🎨 UI/UX Features
 
-## Development Notes
+- **Collapsible Sections**: Only one section open at a time for better focus
+- **Auto-expand**: Sections automatically open when fields are focused
+- **Responsive Design**: Works on desktop and mobile devices
+- **Modern Styling**: Clean, professional appearance
+- **Form Validation**: Real-time validation with helpful error messages
 
-### Data Validation
-- ISO date format enforcement (YYYY-MM-DD) with leap year validation
-- Phone number format validation with character restrictions
-- VIN validation (17 characters, excludes I/O/Q)
-- Comprehensive field validation with length limits
-- Schema-based type checking with Zod
-
-### Error Handling
-- Graceful AI response parsing
-- Network error recovery
-- Form interaction error handling
-- Comprehensive logging
-
-### Performance Considerations
-- Efficient element selection strategies
-- Minimal DOM manipulation
-- Optimized AI prompt design
-- Resource cleanup and memory management
-
-## Future Enhancements
+## 🚀 Future Enhancements
 
 - [ ] Multi-vehicle support for fleet management
 - [ ] Integration with automotive service databases
@@ -205,8 +166,6 @@ Submit vehicle service request data for automated form filling.
 - [ ] Parts inventory integration
 - [ ] Advanced reporting and analytics
 
-## License
+## 📄 License
 
-This project is licensed under the ISC License.
-
-
+This project is licensed under the ISC License. 
