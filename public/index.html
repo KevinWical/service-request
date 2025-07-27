@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Service Request Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="heart-icon">
+                <i class="fas fa-car"></i>
+            </div>
+            <h1>Car Service Request Form</h1>
+            <p>Please provide detailed information about your vehicle and service needs.</p>
+        </div>
+
+        <form class="form-card" id="serviceForm">
+            <!-- Customer Information Section -->
+            <div class="form-section" id="customerInfo">
+                <div class="section-header" onclick="toggleSection('customerInfo')">
+                    <div class="section-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span>Customer Information</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="section-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerName">Full Name *</label>
+                            <input type="text" id="customerName" name="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number *</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="preferredContact">Preferred Contact Method</label>
+                            <select id="preferredContact" name="preferredContact">
+                                <option value="Phone">Phone</option>
+                                <option value="Email">Email</option>
+                                <option value="Text">Text Message</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicle Information Section -->
+            <div class="form-section" id="vehicleInfo">
+                <div class="section-header" onclick="toggleSection('vehicleInfo')">
+                    <div class="section-icon">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <span>Vehicle Information</span>
+                    <i class="fas fa-chevron-right toggle-icon"></i>
+                </div>
+                <div class="section-content" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="make">Vehicle Make *</label>
+                            <select id="make" name="make" required>
+                                <option value="">Select Make</option>
+                                <option value="Toyota">Toyota</option>
+                                <option value="Honda">Honda</option>
+                                <option value="Ford">Ford</option>
+                                <option value="Chevrolet">Chevrolet</option>
+                                <option value="Nissan">Nissan</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Volkswagen">Volkswagen</option>
+                                <option value="Hyundai">Hyundai</option>
+                                <option value="Kia">Kia</option>
+                                <option value="Mazda">Mazda</option>
+                                <option value="Subaru">Subaru</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Vehicle Model *</label>
+                            <input type="text" id="model" name="model" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="year">Year *</label>
+                            <input type="number" id="year" name="year" min="1900" max="2030" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mileage">Current Mileage *</label>
+                            <input type="number" id="mileage" name="mileage" min="0" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vin">VIN Number</label>
+                            <input type="text" id="vin" name="vin" maxlength="17" placeholder="17-character VIN">
+                        </div>
+                        <div class="form-group">
+                            <label for="licensePlate">License Plate</label>
+                            <input type="text" id="licensePlate" name="licensePlate" placeholder="State and plate number">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Request Section -->
+            <div class="form-section" id="serviceRequest">
+                <div class="section-header" onclick="toggleSection('serviceRequest')">
+                    <div class="section-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <span>Service Request</span>
+                    <i class="fas fa-chevron-right toggle-icon"></i>
+                </div>
+                <div class="section-content" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="serviceType">Service Type *</label>
+                            <select id="serviceType" name="serviceType" required>
+                                <option value="">Select Service</option>
+                                <option value="Oil Change">Oil Change</option>
+                                <option value="Brake Service">Brake Service</option>
+                                <option value="Tire Rotation">Tire Rotation</option>
+                                <option value="Engine Diagnostic">Engine Diagnostic</option>
+                                <option value="Transmission Service">Transmission Service</option>
+                                <option value="Electrical System">Electrical System</option>
+                                <option value="AC/Heating">AC/Heating</option>
+                                <option value="Suspension">Suspension</option>
+                                <option value="Exhaust System">Exhaust System</option>
+                                <option value="General Maintenance">General Maintenance</option>
+                                <option value="Emergency Repair">Emergency Repair</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="urgency">Urgency Level *</label>
+                            <select id="urgency" name="urgency" required>
+                                <option value="">Select Urgency</option>
+                                <option value="Routine">Routine (1-2 weeks)</option>
+                                <option value="Standard">Standard (3-5 days)</option>
+                                <option value="Urgent">Urgent (1-2 days)</option>
+                                <option value="Emergency">Emergency (Same day)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="problemDescription">Problem Description *</label>
+                            <textarea id="problemDescription" name="problemDescription" placeholder="Please describe the issue in detail..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="symptoms">Symptoms</label>
+                            <textarea id="symptoms" name="symptoms" placeholder="Any specific symptoms, sounds, or behaviors..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="preferredDate">Preferred Service Date</label>
+                            <input type="date" id="preferredDate" name="preferredDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select Budget</option>
+                                <option value="Under $100">Under $100</option>
+                                <option value="$100-$300">$100-$300</option>
+                                <option value="$300-$500">$300-$500</option>
+                                <option value="$500-$1000">$500-$1000</option>
+                                <option value="Over $1000">Over $1000</option>
+                                <option value="No Limit">No Limit</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Information Section -->
+            <div class="form-section" id="additionalInfo">
+                <div class="section-header" onclick="toggleSection('additionalInfo')">
+                    <div class="section-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <span>Additional Information</span>
+                    <i class="fas fa-chevron-right toggle-icon"></i>
+                </div>
+                <div class="section-content" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="previousRepairs">Recent Repairs</label>
+                            <textarea id="previousRepairs" name="previousRepairs" placeholder="List any recent repairs or modifications..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="warrantyInfo">Warranty Information</label>
+                            <textarea id="warrantyInfo" name="warrantyInfo" placeholder="Any warranty details or extended coverage..."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="specialInstructions">Special Instructions</label>
+                            <textarea id="specialInstructions" name="specialInstructions" placeholder="Any special requests or instructions for the mechanic..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="howDidYouHear">How did you hear about us?</label>
+                            <select id="howDidYouHear" name="howDidYouHear">
+                                <option value="">Select Option</option>
+                                <option value="Google Search">Google Search</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Friend/Family">Friend/Family</option>
+                                <option value="Online Review">Online Review</option>
+                                <option value="Drive By">Drive By</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Submit Service Request</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
