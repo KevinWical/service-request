@@ -14,8 +14,6 @@ yarn-error.log*
 # Logs
 logs
 *.log
-patient.log
-serviceRequest.log
 
 # Runtime data
 pids
