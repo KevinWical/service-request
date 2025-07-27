@@ -30,8 +30,11 @@ jobs:
     - name: Install Playwright browsers
       run: npx playwright install
   
-    - name: Run form-fill
-      run: npm run testRun
+    - name: Start server and run form-fill
+      run: |
+        npm run dev & sleep 10
+        npm run testRun
+        pkill -f "ts-node"
 
     - name: Commit serviceRequest.log
       run: |
